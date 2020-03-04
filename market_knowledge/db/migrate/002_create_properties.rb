@@ -17,6 +17,8 @@ class CreateProperties < ActiveRecord::Migration[5.2]
         t.string :business_park
         t.string :submarket
 
+        #save to lease when saving lease at that time
+
         t.string :landlord_broker_company
         t.string :bldg_owner
         t.string :property_manager
