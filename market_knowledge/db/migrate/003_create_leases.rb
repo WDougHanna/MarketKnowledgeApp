@@ -18,7 +18,7 @@ class CreateLeases < ActiveRecord::Migration[5.2]
         t.string :rent_type
         t.integer :effective_rent
         t.string :escalation
-        t.intger :free_rent
+        t.integer :free_rent
         t.integer :ti_psf
         t.string :transaction_type
         t.string :tenant_broker_company
