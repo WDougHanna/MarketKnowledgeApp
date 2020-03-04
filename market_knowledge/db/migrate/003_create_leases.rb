@@ -3,7 +3,7 @@ class CreateLeases < ActiveRecord::Migration[5.2]
       create_table :leases do |t|
         t.string :tenant
 
-       #display bldg name, address, submarket, class
+       #display for bldg: bldg name, address, submarket, class
 
         t.integer :lease_size
         t.string :suite
@@ -33,7 +33,7 @@ class CreateLeases < ActiveRecord::Migration[5.2]
         t.integer :electric
 
 
-        #display tenant, bldg name, term, commencement_date, fy_rent, rent_type, escalation, free_rent, ti_psf, lease_size
+        #display for leases: tenant, bldg name, term, commencement_date, fy_rent, rent_type, escalation, free_rent, ti_psf, lease_size
 
 
         t.timestamps

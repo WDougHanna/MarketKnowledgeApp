@@ -11,14 +11,13 @@
 
   <body>
     <ul class="nav">
-    <% if current_user %>
+    <%# if current user %>
+      <li><a href="/"> Home </a></li>
       <li><a href="/properties"> Properties </a></li>
       <li><a href="/leases"> Leases </a></li>
       <li><%= link_to "Log Out", signout_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to "Sign Up", new_user_path %></li>
-      <li><%= link_to "Sign In", signin_path %></li>
-    <% end %>
+    <%# sign in sign up %>
+   
     </ul>
 
     <%= yield %>

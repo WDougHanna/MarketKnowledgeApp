@@ -1,0 +1,26 @@
+<%= form_for(@property) do |f| %>
+
+<% if @property.errors.any? %>
+  <div>
+    <h2>There were some errors:</h2>
+
+    <ul>
+      <% @property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div>
+    <%= f.label :property_name %><br>
+    <%= f.text_field :property_name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+
+
+<% end %>

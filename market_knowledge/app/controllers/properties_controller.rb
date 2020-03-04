@@ -19,17 +19,18 @@ class PropertiesController < ApplicationController
     def create
       @property = Property.new(property_params)
       if @property.save
-      render json: @property, status: 201
+      render :show
       else
         render :new
       end
     end
   
     def edit
-  
+      @property = Property.find(params[:id])
     end
   
     def update
+      @property = Property.find(params[:id])
       if @property.update(property_params)
         redirect_to @property
       else
@@ -38,6 +39,7 @@ class PropertiesController < ApplicationController
     end
   
     def destroy
+      @property = Property.find(params[:id])
       @property.destroy
       redirect_to properties_path
     end
@@ -45,7 +47,7 @@ class PropertiesController < ApplicationController
   private
   
     def property_params
-      params.require(:property) #waiting on scema confirmation
+      params.require(:property).permit! #waiting on schema confirmation
     end
   
   end
