@@ -1,0 +1,16 @@
+<h3> Tenant</h3> <%= @lease.tenant %>
+<h3>Property</h3> <%= @lease.property.property_name %>
+<br>
+<%= link_to 'List', leases_path %>
+<%= link_to 'Edit', edit_lease_path(@lease) %>
+<%= link_to 'Destroy', lease_path(@lease), method: :delete, data: { confirm: 'Are you sure you want to delete?' }%>
+
+<%# need to build this %>
+<a href="#" class="js-more" data-id="<%=@lease.id%>">Show More</a> 
+
+
+<div class="lease">
+  <ul>
+
+  </ul>
+</div>

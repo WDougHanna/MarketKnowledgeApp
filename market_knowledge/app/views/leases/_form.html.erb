@@ -1,0 +1,30 @@
+
+<%= form_for(@lease) do |f| %>
+
+<% if @lease.errors.any? %>
+  <div>
+    <h2>There were some errors:</h2>
+
+    <ul>
+      <% @lease.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div>
+    <%= f.label :tenant %><br>
+    <%= f.text_field :tenant %>
+  </div>
+
+  <div>
+    <%= f.label :property_id %><br>
+    <%= f.collection_select(:property_id, @properties, :id, :property_name) %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>

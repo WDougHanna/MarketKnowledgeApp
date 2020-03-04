@@ -1,0 +1,8 @@
+<h1>All Leases</h1>
+
+<%= link_to 'New Lease', new_lease_path %>
+<ul>
+<% @leases.each do |lease| %>
+  <li> <%= lease.tenant %> <%= link_to "Show", lease_path(lease.id) %>  </li>
+<% end %>
+</ul>

@@ -1,7 +1,7 @@
 class LeasesController < ApplicationController
   
     def show
-      @lease = lease.find(params[:id])
+      @lease = Lease.find(params[:id])
       respond_to do |format|
         format.html { render :show }
         format.json { render json: @lease}
@@ -9,7 +9,7 @@ class LeasesController < ApplicationController
     end
   
     def index
-      @leases = lease.all
+      @leases = Lease.all
     end
   
     def new
@@ -18,7 +18,7 @@ class LeasesController < ApplicationController
     end
   
     def create
-      @lease = lease.new(lease_params)
+      @lease = Lease.new(lease_params)
       if @lease.save
         redirect_to @lease
       else
@@ -28,10 +28,12 @@ class LeasesController < ApplicationController
     end
   
     def edit
-  
+      @lease = Lease.find(params[:id])
+      @properties = Property.all
     end
   
     def update
+      @lease = Lease.find(params[:id])
       if @lease.update(lease_params)
         redirect_to @lease
       else
@@ -40,6 +42,7 @@ class LeasesController < ApplicationController
     end
   
     def destroy
+      @lease = Lease.find(params[:id])
       @lease.destroy
       redirect_to leases_path
     end
@@ -47,7 +50,7 @@ class LeasesController < ApplicationController
     private
   
     def lease_params
-      params.require(:lease) #waiting to confirm schema
+      params.require(:lease).permit! #waiting to confirm schema
     end
   
   end

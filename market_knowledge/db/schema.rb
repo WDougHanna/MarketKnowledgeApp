@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 4) do
 
   create_table "leases", force: :cascade do |t|
     t.string "tenant"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.integer "electric"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "property_id"
   end
 
   create_table "properties", force: :cascade do |t|
