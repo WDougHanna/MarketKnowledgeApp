@@ -10,6 +10,15 @@ class PropertiesController < ApplicationController
   
     def index
       @properties = Property.all
+      respond_to do |format|
+        format.html
+        format.csv { send_data @properties.to_csv(['property_name'])}
+      end   
+    end
+
+    def import
+      Property.import(params[:file])
+      redirect_to root_url, notice: 'Properties Uploaded successfully'
     end
   
     def new
