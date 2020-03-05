@@ -10,6 +10,15 @@ class LeasesController < ApplicationController
   
     def index
       @leases = Lease.all
+      respond_to do |format|
+        format.html
+        format.csv { send_data @leases.to_csv(['tenant'])}
+      end   
+    end
+
+    def import
+      Lease.import(params[:file])
+      redirect_to root_url, notice: 'Leases Uploaded successfully'
     end
   
     def new

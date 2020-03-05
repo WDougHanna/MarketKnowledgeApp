@@ -1,6 +1,14 @@
 <h1>All Leases</h1>
 
 <%= link_to 'New Lease', new_lease_path %>
+<br><br>
+<%=link_to 'Export to CSV', leases_path(format: 'csv')%>
+<br><br>
+<%= form_tag import_leases_path, multipart: true do%>
+  <%= file_field_tag :file %>
+  <%= submit_tag 'Import CSV'%>
+<% end %>
+<br><br>
 <ul>
 <% @leases.each do |lease| %>
   <li> <%= lease.tenant %> <%= link_to "Show", lease_path(lease.id) %>  </li>
