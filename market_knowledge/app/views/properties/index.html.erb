@@ -8,6 +8,12 @@
   <%= submit_tag 'Import CSV'%>
 <% end %>
 <br><br>
+<%= form_tag properties_path, :method => "get" do %>
+<%= label_tag(:search, "Search by Property Name:") %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag("Search", :name => nil) %>
+<%end%>
+<br><br>
 <ul>
 <% @properties.each do |property| %>
   <li> <%= property.property_name %> <%= link_to "Show", property_path(property.id) %>  </li>

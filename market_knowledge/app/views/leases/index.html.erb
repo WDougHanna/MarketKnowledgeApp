@@ -9,6 +9,12 @@
   <%= submit_tag 'Import CSV'%>
 <% end %>
 <br><br>
+<%= form_tag leases_path, :method => "get" do %>
+<%= label_tag(:search, "Search by Tenant Name:") %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag("Search", :name => nil) %>
+<%end%>
+<br><br>
 <ul>
 <% @leases.each do |lease| %>
   <li> <%= lease.tenant %> <%= link_to "Show", lease_path(lease.id) %>  </li>

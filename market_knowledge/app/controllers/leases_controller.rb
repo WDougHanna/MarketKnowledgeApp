@@ -9,7 +9,7 @@ class LeasesController < ApplicationController
     end
   
     def index
-      @leases = Lease.all
+      @leases = Lease.search(params[:search])
       respond_to do |format|
         format.html
         format.csv { send_data @leases.to_csv(['tenant'])}

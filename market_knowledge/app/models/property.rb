@@ -22,4 +22,16 @@ class Property < ApplicationRecord
     end
   end
 
+  def self.search(search)
+    if search
+      if search != ""
+        @properties = Property.where(property_name: search)
+      else
+        @properties = Property.all
+      end
+    else
+      @properties = Property.all
+    end
+  end
+
 end
