@@ -1,5 +1,30 @@
-<h3> Tenant</h3> <%= @lease.tenant %>
-<h3>Property</h3> <%= @lease.property.property_name %>
+<h3><u>Tenant</u></h3> <%= @lease.tenant %>
+<h3><u>Property</u></h3> <%= @lease.property.property_name %>
+<h3><u>Lease Details</u></h3>
+<p><strong>Lease Size:</strong> <%= @lease.lease_size %></p>
+<p><strong>Suite:</strong> <%= @lease.suite %></p>
+<p><strong>Term:</strong> <%= @lease.term %></p>
+<p><strong>Sign Date:</strong> <%= @lease.sign_date %></p>
+<p><strong>Commencement Date:</strong> <%= @lease.commencement_date %></p>
+<p><strong>Expiration Date:</strong> <%= @lease.expiration_date %></p>
+<p><strong>Lease Type:</strong> <%= @lease.lease_type %></p>
+<p><strong>First Year Rent:</strong> <%= @lease.fy_rent %></p>
+<p><strong>Rent Type:</strong> <%= @lease.rent_type %></p>
+<p><strong>Effective Rent:</strong> <%= @lease.effective_rent %></p>
+<p><strong>Escalation:</strong> <%= @lease.escalation %></p>
+<p><strong>Months of Free Rent:</strong> <%= @lease.free_rent %></p>
+<p><strong>TI per SQFT:</strong> <%= @lease.ti_psf %></p>
+<p><strong>Transaction Type:</strong> <%= @lease.transaction_type %></p>
+<p><strong>Tenant Broker Company:</strong> <%= @lease.tenant_broker_company %></p>
+<p><strong>Base Year:</strong> <%= @lease.base_year %></p>
+<h3><u>Building Info</u></h3>
+<p><strong>Landlord Broker Company:</strong> <%= @lease.landlord_broker_company %></p>
+<p><strong>Building Owner:</strong> <%= @lease.bldg_owner %></p>
+<p><strong>Property Manager:</strong> <%= @lease.property_manager %></p>
+<p><strong>Quoted Rate:</strong> <%= @lease.quoted_rate %></p>
+<p><strong>NNN:</strong> <%= @lease.nnn %></p>
+<p><strong>Electric:</strong> <%= @lease.electric %></p>
+
 <br>
 <%= link_to 'List', leases_path %>
 <%= link_to 'Edit', edit_lease_path(@lease) %>

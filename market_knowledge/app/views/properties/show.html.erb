@@ -1,6 +1,28 @@
 
 <h1> <%= @property.property_name %> </h1>
-
+<h3><u>Address</u></h3>
+<p><strong>Street:</strong> <%= @property.street %></p>
+<p><strong>City:</strong> <%= @property.city %></p>
+<h3><u>Building Info</u></h3>
+<p><strong>Year Built:</strong> <%= @property.year_built %></p>
+<p><strong>Remodel Year:</strong> <%= @property.remodel_year %></p>
+<p><strong>Gross Building Area:</strong> <%= @property.gross_bldg_area %></p>
+<p><strong>Foundation Area:</strong> <%= @property.foundation_area %></p>
+<p><strong>Number of Stories:</strong> <%= @property.num_stories %></p>
+<p><strong>Net Lease Area:</strong> <%= @property.net_lease_area %></p>
+<p><strong>Building Class:</strong> <%= @property.bldg_class %></p>
+<p><strong>Business Park:</strong> <%= @property.business_park %></p>
+<p><strong>Submarket:</strong> <%= @property.submarket %></p>
+<p><strong>Landlord Broker Company:</strong> <%= @property.landlord_broker_company %></p>
+<p><strong>Building Owner:</strong> <%= @property.bldg_owner %></p>
+<p><strong>Property Manager:</strong> <%= @property.property_manager %></p>
+<h3><u>Financial Info</u></h3>
+<p><strong>Quoted Rate:</strong> <%= @property.quoted_rate %></p>
+<p><strong>NNN:</strong> <%= @property.nnn %></p>
+<p><strong>Electric:</strong> <%= @property.electric %></p>
+<br>
+<br>
+<br>
 <%= link_to 'List', properties_path %>
 <%= link_to 'Edit', edit_property_path(@property) %>
 <%= link_to 'Destroy', property_path(@property), method: :delete, data: { confirm: 'Are you sure you want to delete?' }%>

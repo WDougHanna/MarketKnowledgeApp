@@ -18,6 +18,8 @@ class PropertiesController < ApplicationController
 
     def import
       Property.import(params[:file])
+      # need to figure out the right format for import
+      # need to handle failures
       redirect_to root_url, notice: 'Properties Uploaded successfully'
     end
   

@@ -16,6 +16,6 @@
 <br><br>
 <ul>
 <% @properties.each do |property| %>
-  <li> <%= property.property_name %> <%= link_to "Show", property_path(property.id) %>  </li>
+  <li><strong>Name:</strong> <%= property.property_name %> <br><strong>Street:</strong> <%= property.street %> <br><strong>Submarket:</strong> <%= property.submarket %> <br><strong>Class:</strong> <%= property.bldg_class %> <br>   <%= link_to "Show", property_path(property.id) %>  </li>
 <% end %>
 </ul>

@@ -18,6 +18,9 @@ class LeasesController < ApplicationController
 
     def import
       Lease.import(params[:file])
+      # need to figure out the right format for import
+      # need to handle failures
+      #need to figure out how to make sure leases relate to properties
       redirect_to root_url, notice: 'Leases Uploaded successfully'
     end
   

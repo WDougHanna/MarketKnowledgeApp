@@ -17,6 +17,16 @@
 <br><br>
 <ul>
 <% @leases.each do |lease| %>
-  <li> <%= lease.tenant %> <%= link_to "Show", lease_path(lease.id) %>  </li>
+  <li><strong>Tenant:</strong><%= lease.tenant %><br>
+  <li><strong>Bldg:</strong><%= lease.property.property_name %><br>
+  <li><strong>Term:</strong><%= lease.term %><br>
+  <li><strong>Com. Date:</strong><%= lease.commencement_date %><br>
+  <li><strong>FY Rent:</strong><%= lease.fy_rent %><br>
+  <li><strong>Rent Type:</strong><%= lease.rent_type %><br>
+  <li><strong>Escalation:</strong><%= lease.escalation %><br>
+  <li><strong>Free Rent:</strong><%= lease.free_rent %><br>
+  <li><strong>TI per SQFT:</strong><%= lease.ti_psf %><br>
+  <li><strong>Lease Size:</strong><%= lease.lease_size %><br>
+   <%= link_to "Show", lease_path(lease.id) %>  </li>
 <% end %>
 </ul>

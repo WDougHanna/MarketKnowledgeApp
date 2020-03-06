@@ -14,15 +14,127 @@
 <% end %>
 
   <div>
-    <%= f.label :tenant %><br>
+    <%= f.label :tenant, "Tenant Name" %><br>
     <%= f.text_field :tenant %>
   </div>
 
   <div>
-    <%= f.label :property_id %><br>
-    <%= f.collection_select(:property_id, @properties, :id, :property_name) %>
+    <%= f.label :property_id, "What Property?" %><br>
+    <%= @bldg = f.collection_select(:property_id, @properties, :id, :property_name) %>
   </div>
 
+  <div>
+    <%= f.label :lease_size, "Lesase Size" %><br>
+    <%= f.text_field :lease_size %>
+  </div>
+
+  <div>
+    <%= f.label :suite, "Suite" %><br>
+    <%= f.text_field :suite %>
+  </div>
+
+  <div>
+    <%= f.label :term, "Term" %><br>
+    <%= f.text_field :term %>
+  </div>
+
+  <div>
+    <%= f.label :sign_date, "Sign Date" %><br>
+    <%= f.text_field :sign_date %>
+  </div>
+
+  <div>
+    <%= f.label :commencement_date, "Commencement Date" %><br>
+    <%= f.text_field :commencement_date %>
+  </div>
+
+  <div>
+    <%= f.label :expiration_date, "Expiration Date" %><br>
+    <%= f.text_field :expiration_date %>
+  </div>
+
+  <div>
+    <%= f.label :lease_type, "Lease Type" %><br>
+    <%= f.text_field :lease_type %>
+  </div>
+
+  <div>
+    <%= f.label :fy_rent, "First Year Rent" %><br>
+    <%= f.text_field :fy_rent %>
+  </div>
+
+  <div>
+    <%= f.label :rent_type, "Rent Type" %><br>
+    <%= f.text_field :rent_type %>
+  </div>
+
+  <div>
+    <%= f.label :effective_rent, "Effective Rent" %><br>
+    <%= f.text_field :effective_rent %>
+  </div>
+
+  <div>
+    <%= f.label :escalation, "Escalation" %><br>
+    <%= f.text_field :escalation %>
+  </div>
+
+  <div>
+    <%= f.label :free_rent, "Months of Free Rent" %><br>
+    <%= f.text_field :free_rent %>
+  </div>
+
+  <div>
+    <%= f.label :ti_psf, "TI per SQFT" %><br>
+    <%= f.text_field :ti_psf %>
+  </div>
+
+  <div>
+    <%= f.label :transaction_type, "Transaction Type" %><br>
+    <%= f.text_field :transaction_type %>
+  </div>
+
+  <div>
+    <%= f.label :tenant_broker_company, "Tenant Broker Company" %><br>
+    <%= f.text_field :tenant_broker_company %>
+  </div>
+
+  <div>
+    <%= f.label :base_year, "Base Year" %><br>
+    <%= f.text_field :base_year %>
+  </div>
+
+  <div>
+    <%= f.label :landlord_broker_company, "Landlord Broker Company" %><br>
+    <%= f.text_field :landlord_broker_company %>
+  </div>
+
+  <div>
+    <%= f.label :bldg_owner, "Building Owner" %><br>
+    <%= f.text_field :bldg_owner %>
+  </div>
+
+  <div>
+    <%= f.label :property_manager, "Property Manager" %><br>
+    <%= f.text_field :property_manager %>
+  </div>
+
+  <div>
+    <%= f.label :quoted_rate, "Quoted Rate" %><br>
+    <%= f.text_field :quoted_rate %>
+  </div>
+
+  <div>
+    <%= f.label :nnn, "NNN" %><br>
+    <%= f.text_field :nnn %>
+  </div>
+
+  <div>
+    <%= f.label :electric, "Electric" %><br>
+    <%= f.text_field :electric %>
+  </div>
+
+<br>
+<br>
   <div>
     <%= f.submit %>
   </div>
