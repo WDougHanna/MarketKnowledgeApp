@@ -1,0 +1,3 @@
+class Submarket < ApplicationRecord
+
+end

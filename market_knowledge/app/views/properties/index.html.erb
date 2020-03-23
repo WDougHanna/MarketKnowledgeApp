@@ -14,6 +14,13 @@
 <%= submit_tag("Search", :name => nil) %>
 <%end%>
 <br><br>
+<%# might need to create tables for filter categories %>
+<%= form_tag properties_path, :method => "get" do %>
+<%= label_tag(:filter_sub, "Filter by Submarket:") %>
+<%= collection_select :property, :submarket, Property.all, :submarket, :submarket %>
+<%= submit_tag("Filter", :name => nil) %>
+<%end%>
+<br><br>
 <ul>
 <% @properties.each do |property| %>
   <li><strong>Name:</strong> <%= property.property_name %> <br><strong>Street:</strong> <%= property.street %> <br><strong>Submarket:</strong> <%= property.submarket %> <br><strong>Class:</strong> <%= property.bldg_class %> <br>   <%= link_to "Show", property_path(property.id) %>  </li>

@@ -25,6 +25,7 @@ class PropertiesController < ApplicationController
   
     def new
       @property = Property.new
+      @submarkets = Submarket.all
     end
   
     def create

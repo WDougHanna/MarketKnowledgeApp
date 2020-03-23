@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 5) do
 
   create_table "leases", force: :cascade do |t|
     t.string "tenant"
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(version: 4) do
     t.integer "quoted_rate"
     t.integer "nnn"
     t.integer "electric"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "submarkets", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

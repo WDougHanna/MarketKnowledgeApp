@@ -25,6 +25,7 @@ class Property < ApplicationRecord
   def self.search(search)
     if search
       if search != ""
+        #would like to build to accept partial matches "contains"
         @properties = Property.where(property_name: search)
       else
         @properties = Property.all

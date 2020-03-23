@@ -69,7 +69,7 @@
 
   <div>
     <%= f.label :submarket, "Submarket" %><br>
-    <%= f.text_field :submarket %>
+    <%= f.collection_select( :submarket, @submarkets, :name, :name) %>
   </div>
 
   <div>
