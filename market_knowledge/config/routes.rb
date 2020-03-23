@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "/signin", to: "sessions#new"
   post "/sessions/create", to: "sessions#create"
   delete "/signout", to: "sessions#destroy"
+  get "/filter", to: "properties#filter"
+  get "/search", to: "properties#search"
 
   resources :users
   resources :properties do
