@@ -9,7 +9,8 @@ class PropertiesController < ApplicationController
     end
   
     def index
-      @properties = Property.search(params[:search])
+      # @properties = Property.search(params[:search])
+      @properties = Property.filter_sub(params[:property][:submarket])
       respond_to do |format|
         format.html
         format.csv { send_data @properties.to_csv(['property_name'])}

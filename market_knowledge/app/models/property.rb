@@ -35,4 +35,16 @@ class Property < ApplicationRecord
     end
   end
 
+  def self.filter_sub(filter_sub)
+    if filter_sub
+      if filter_sub != ""
+        @properties = Property.where(submarket: filter_sub)
+      else
+        @properties = Property.all
+      end
+    else
+      @properties = Property.all
+    end
+  end
+
 end

@@ -14,11 +14,11 @@
 <%= submit_tag("Search", :name => nil) %>
 <%end%>
 <br><br>
-<%# might need to create tables for filter categories %>
+
 <%= form_tag properties_path, :method => "get" do %>
 <%= label_tag(:filter_sub, "Filter by Submarket:") %>
 <%= collection_select :property, :submarket, Property.all, :submarket, :submarket %>
-<%= submit_tag("Filter", :name => nil) %>
+<%= submit_tag("Filter") %>
 <%end%>
 <br><br>
 <ul>
