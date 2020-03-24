@@ -35,15 +35,16 @@ class Property < ApplicationRecord
     end
   end
 
-  def self.filter_sub(filter_sub)
-    if filter_sub
-      if filter_sub != ""
-        @properties = Property.where(submarket: filter_sub)
+  def self.filter(filter)
+    type = filter.keys[0]
+    value = filter[type]
+    case type
+      when ""
+        @properties = Property.all
+      when "submarket"
+        @properties = Property.where(submarket: value)
       else
         @properties = Property.all
-      end
-    else
-      @properties = Property.all
     end
   end
 

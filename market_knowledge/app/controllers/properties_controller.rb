@@ -9,7 +9,7 @@ class PropertiesController < ApplicationController
     end
   
     def index
-      @properties = Property.all
+      @properties = Property.all # circular reference?
       respond_to do |format|
         format.html
         format.csv { send_data @properties.to_csv(['property_name'])}
@@ -22,7 +22,9 @@ class PropertiesController < ApplicationController
     end
 
     def filter
-      @properties = Property.filter_sub(params[:property][:submarket])
+      puts params
+      @properties = Property.filter(params[:property])
+      
       render :index 
     end
 
