@@ -9,11 +9,19 @@
   <%= submit_tag 'Import CSV'%>
 <% end %>
 <br><br>
-<%= form_tag leases_path, :method => "get" do %>
+<%= form_tag leases_search_path, :method => "get" do %>
 <%= label_tag(:search, "Search by Tenant Name:") %>
 <%= text_field_tag :search, params[:search] %>
 <%= submit_tag("Search", :name => nil) %>
 <%end%>
+<br><br>
+<%= form_tag leases_filter_path, :method => "get" do %>
+<%= label_tag(:filter_sub, "Filter by Submarket:") %>
+<%= collection_select :lease, :submarket, Property.all, :submarket, :submarket %>
+<%= submit_tag("Filter") %>
+<%end%>
+<br><br>
+<button><%= link_to 'Reset', leases_path %></button>
 <br><br>
 <ul>
 <% @leases.each do |lease| %>
