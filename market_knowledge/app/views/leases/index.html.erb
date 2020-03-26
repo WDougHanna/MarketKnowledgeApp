@@ -16,13 +16,19 @@
 <%end%>
 <br><br>
 <%= form_tag leases_filter_path, :method => "get" do %>
-<%= label_tag(:filter_sub, "Filter by Submarket:") %>
-<%= collection_select :lease, :submarket, Property.all, :submarket, :submarket %>
+<%= label_tag(:filter, "Filter by Submarket:") %>
+<%= collection_select :submarket, :submarket, Property.all, :submarket, :submarket %>
+<%= label_tag(:lease_low, "Lease Size Low:") %>
+<%= text_field_tag :lease_low, params[:lease_low] %>
+<%= label_tag(:lease_high, "Lease Size High:") %>
+<%= text_field_tag :lease_high, params[:lease_high] %>
 <%= submit_tag("Filter") %>
 <%end%>
 <br><br>
 <button><%= link_to 'Reset', leases_path %></button>
 <br><br>
+
+
 <ul>
 <% @leases.each do |lease| %>
   <li><strong>Tenant:</strong><%= lease.tenant %><br>

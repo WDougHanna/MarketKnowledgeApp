@@ -22,7 +22,12 @@ class LeasesController < ApplicationController
     end
 
     def filter
-      @leases = Lease.filter(params[:lease])
+      parameters = {
+        submarket: params[:submarket],
+        lease_high: params[:lease_high],
+        lease_low: params[:lease_low] 
+      }
+      @leases = Lease.filter(parameters)
       render :index 
     end
 

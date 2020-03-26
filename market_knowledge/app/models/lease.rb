@@ -34,24 +34,15 @@ class Lease < ApplicationRecord
     end
   end
 
-  def self.filter(filter)
-    type = filter.keys[0]
-    value = filter[type]
-    case type
-      when ""
-        @leases = Lease.all
-      when "submarket"
-        @property_ids = []
-        @properties = Property.where(submarket: value)
-        @properties.each do |property|
-          @property_ids << property.id
-        end
-        @leases = Lease.where(property_id: @property_ids)
-      else
-        @leases = Lease.all
+  def self.filter(parameters)
+    @property_ids = []
+    @properties = Property.where(submarket: parameters[:submarket][:submarket])
+    @properties.each do |property|
+      @property_ids << property.id
     end
+    # binding.pry
+    @leases = Lease.where(property_id: @property_ids)
   end
-
-
+  # , lease_size: parameters[:lease_low]..parameters[:lease_high]
 
 end
