@@ -35,14 +35,22 @@ class Lease < ApplicationRecord
   end
 
   def self.filter(parameters)
-    @property_ids = []
+    inf = 1.0/0
+    property_ids = []
+    
+    lease_low = parameters[:lease_low] == "" ?  0 : parameters[:lease_low]
+    lease_high = parameters[:lease_high] == "" ? inf : parameters[:lease_high]
+
+    
     @properties = Property.where(submarket: parameters[:submarket][:submarket])
     @properties.each do |property|
-      @property_ids << property.id
+      property_ids << property.id
     end
-    # binding.pry
-    @leases = Lease.where(property_id: @property_ids)
+    
+    property_ids = property_ids == [] ? [0..100000] : property_ids
+    
+    @leases = Lease.where(property_id: property_ids, lease_size: lease_low..lease_high)
   end
-  # , lease_size: parameters[:lease_low]..parameters[:lease_high]
+  
 
 end
