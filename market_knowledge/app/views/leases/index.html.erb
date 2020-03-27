@@ -18,10 +18,22 @@
 <%= form_tag leases_filter_path, :method => "get" do %>
 <%= label_tag(:filter, "Filter by Submarket:") %>
 <%= collection_select :submarket, :submarket, Property.all, :submarket, :submarket %>
+<br><br>
 <%= label_tag(:lease_low, "Lease Size Low:") %>
 <%= text_field_tag :lease_low, params[:lease_low] %>
 <%= label_tag(:lease_high, "Lease Size High:") %>
 <%= text_field_tag :lease_high, params[:lease_high] %>
+<br><br>
+<%= label_tag(:lcd_low, "LCD Start:") %>
+<%= date_field_tag :lcd_low, params[:lcd_low] %>
+<%= label_tag(:lcd_high, "LCD End:") %>
+<%= date_field_tag :lcd_high, params[:lcd_high] %>
+<br><br>
+<%= label_tag(:lxd_low, "LXD Start:") %>
+<%= date_field_tag :lxd_low, params[:lxd_low] %>
+<%= label_tag(:lxd_high, "LXD End:") %>
+<%= date_field_tag :lxd_high, params[:lxd_high] %>
+
 <%= submit_tag("Filter") %>
 <%end%>
 <br><br>

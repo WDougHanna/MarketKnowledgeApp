@@ -25,7 +25,11 @@ class LeasesController < ApplicationController
       parameters = {
         submarket: params[:submarket],
         lease_high: params[:lease_high],
-        lease_low: params[:lease_low] 
+        lease_low: params[:lease_low],
+        lcd_high: params[:lcd_high],
+        lcd_low: params[:lcd_low],
+        lxd_high: params[:lxd_high],
+        lxd_low: params[:lxd_low] 
       }
       @leases = Lease.filter(parameters)
       render :index 
