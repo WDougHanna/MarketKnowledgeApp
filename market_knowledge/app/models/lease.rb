@@ -1,5 +1,6 @@
 class Lease < ApplicationRecord
     belongs_to :property
+    validates :property_id, :lease_size, presence: true
 
   # Generate a CSV File of All Lease Records
   def self.to_csv(fields = column_names, options={})

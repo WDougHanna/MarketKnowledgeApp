@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
-    has_many :leases
-    # , :dependent => :destroy
+    has_many :leases, :dependent => :destroy
+    validates :property_name, :street, :city, presence: true
 
   # Generate a CSV File of All Property Records
   def self.to_csv(fields = column_names, options={})
