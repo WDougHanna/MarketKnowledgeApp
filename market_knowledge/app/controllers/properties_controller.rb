@@ -49,6 +49,7 @@ class PropertiesController < ApplicationController
   
     def edit
       @property = Property.find(params[:id])
+      @submarkets = Submarket.all
     end
   
     def update
@@ -69,7 +70,7 @@ class PropertiesController < ApplicationController
   private
   
     def property_params
-      params.require(:property).permit! #waiting on schema confirmation
+      params.require(:property).permit(:property_name, :street, :city, :year_built, :remodel_year, :gross_bldg_area, :foundation_area, :num_stories, :net_lease_area, :bldg_class, :business_park, :submarket, :landlord_broker_company, :bldg_owner, :property_manager, :quoted_rate, :nnn, :electric)
     end
   
   end

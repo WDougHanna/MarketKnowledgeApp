@@ -81,7 +81,7 @@ class LeasesController < ApplicationController
     private
   
     def lease_params
-      params.require(:lease).permit! #waiting to confirm schema
+      params.require(:lease).permit(:tenant, :lease_size, :suite, :term, :sign_date, :commencement_date, :expiration_date, :lease_type, :fy_rent, :rent_type, :effective_rent, :escalation, :free_rent, :ti_psf, :transaction_type, :tenant_broker_company, :base_year, :landlord_broker_company, :bldg_owner, :property_manager, :quoted_rate, :nnn, :electric, :property_id)
     end
   
   end
