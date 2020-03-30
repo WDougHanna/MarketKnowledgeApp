@@ -49,6 +49,15 @@ class LeasesController < ApplicationController
     end
   
     def create
+      @property = Property.find(params[:lease][:property_id])
+
+      params[:lease][:landlord_broker_company] = @property[:landlord_broker_company]
+      params[:lease][:bldg_owner] = @property[:bldg_owner]
+      params[:lease][:property_manager] = @property[:property_manager]
+      params[:lease][:quoted_rate] = @property[:quoted_rate]
+      params[:lease][:nnn] = @property[:nnn]
+      params[:lease][:electric] = @property[:electric]
+    
       @lease = Lease.new(lease_params)
       if @lease.save
         redirect_to @lease
