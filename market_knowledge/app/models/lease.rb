@@ -13,13 +13,39 @@ class Lease < ApplicationRecord
   end
 
 # Import CSV, Find or Create Lease by its tenant.
-# A tenant might have multiple leases which would cause an issue, look for a different field
-# Update the record.
+# CSV must have the correct column names that match the schema
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      leases_hash = row.to_hash
-      lease = find_or_create_by!(tenant: leases_hash['tenant'])
-      lease.update_attributes(leases_hash)
+      lease_hash = row.to_hash 
+      @property = Property.where(:property_name => lease_hash["property_name"])
+      @property_id = @property[0][:id]
+      lease_hash[:property_id] = @property_id
+      lease_hash = lease_hash.except!("property_name")
+      # binding.pry #tenant is not accessible in the hash for some reason
+      @lease = Lease.where(:tenant => lease_hash["tenant"], :lease_size => lease_hash["lease_size"], :property_id => lease_hash[:property_id]).first_or_create do |lease|
+          lease.suite = lease_hash["suite"]
+          lease.term = lease_hash["term"]
+          lease.sign_date = lease_hash["sign_date"]
+          lease.commencement_date = lease_hash["commencement_date"]
+          lease.expiration_date = lease_hash["expiration_date"]
+          lease.lease_type = lease_hash["lease_type"]
+          lease.fy_rent = lease_hash["fy_rent"]
+          lease.rent_type = lease_hash["rent_type"]
+          lease.effective_rent = lease_hash["effective_rent"]
+          lease.escalation = lease_hash["escalation"]
+          lease.free_rent = lease_hash["free_rent"]
+          lease.ti_psf = lease_hash["ti_psf"]
+          lease.transaction_type = lease_hash["transaction_type"]
+          lease.tenant_broker_company = lease_hash["tenant_broker_company"]
+          lease.base_year = lease_hash["base_year"]
+          lease.landlord_broker_company = lease_hash["landlord_broker_company"]
+          lease.bldg_owner = lease_hash["bldg_owner"]
+          lease.property_manager = lease_hash["property_manager"]
+          lease.quoted_rate = lease_hash["quoted_rate"]
+          lease.nnn = lease_hash["nnn"]
+          lease.electric = lease_hash["electric"]
+      end
+      #handle errors
     end
   end
 
