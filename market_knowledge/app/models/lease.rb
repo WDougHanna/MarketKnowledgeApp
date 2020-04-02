@@ -66,7 +66,6 @@ class Lease < ApplicationRecord
   def self.filter(parameters)
     inf = 1.0/0
     property_ids = []
-    # does not accept empty values for lease size
     lease_low = parameters[:lease_low] == "" ?  0 : parameters[:lease_low]
     lease_high = parameters[:lease_high] == "" ? inf : parameters[:lease_high]
     lcd_low = parameters[:lcd_low] == "" ?  Date.iso8601("2000-01-01") : Date.iso8601(parameters[:lcd_low])
@@ -80,8 +79,7 @@ class Lease < ApplicationRecord
     end
     
     property_ids = property_ids == [] ? [0..100000] : property_ids #needs refactor
-    
-    @leases = Lease.where(property_id: property_ids, lease_size: lease_low..lease_high, commencement_date: lcd_low..lcd_high, expiration_date: lxd_low..lxd_high)
+    @leases = Lease.where(property_id: property_ids, lease_size: lease_low.to_f..lease_high.to_f, commencement_date: lcd_low..lcd_high, expiration_date: lxd_low..lxd_high)
   end
   
 
