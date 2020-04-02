@@ -29,7 +29,7 @@ class PropertiesController < ApplicationController
     def import
       Property.import(params[:file])
       # need to handle failures
-      redirect_to properties_url, notice: 'Properties Uploaded successfully'
+      redirect_to properties_url
     end
   
     def new
@@ -42,6 +42,7 @@ class PropertiesController < ApplicationController
       if @property.save
       render :show
       else
+        @submarkets = Submarket.all
         render :new
       end
     end
