@@ -21,7 +21,6 @@ class Lease < ApplicationRecord
       @property_id = @property[0][:id]
       lease_hash[:property_id] = @property_id
       lease_hash = lease_hash.except!("property_name")
-      # binding.pry #tenant is not accessible in the hash for some reason
       @lease = Lease.where(:tenant => lease_hash["tenant"], :lease_size => lease_hash["lease_size"], :property_id => lease_hash[:property_id]).first_or_create do |lease|
           lease.suite = lease_hash["suite"]
           lease.term = lease_hash["term"]
@@ -38,12 +37,12 @@ class Lease < ApplicationRecord
           lease.transaction_type = lease_hash["transaction_type"]
           lease.tenant_broker_company = lease_hash["tenant_broker_company"]
           lease.base_year = lease_hash["base_year"]
-          lease.landlord_broker_company = lease_hash["landlord_broker_company"]
-          lease.bldg_owner = lease_hash["bldg_owner"]
-          lease.property_manager = lease_hash["property_manager"]
-          lease.quoted_rate = lease_hash["quoted_rate"]
-          lease.nnn = lease_hash["nnn"]
-          lease.electric = lease_hash["electric"]
+          lease.landlord_broker_company = @property[0][:landlord_broker_company]
+          lease.bldg_owner = @property[0][:bldg_owner]
+          lease.property_manager = @property[0][:property_manager]
+          lease.quoted_rate = @property[0][:quoted_rate]
+          lease.nnn = @property[0][:nnn]
+          lease.electric = @property[0][:electric]
       end
       #handle errors
     end
